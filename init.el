@@ -6,8 +6,14 @@
 
 (setq make-backup-files nil)
 
+;;英文字体
 (when (eq system-type 'windows-nt)
   (set-frame-font "consolas-11"))
+;;中文字体
+(dolist (charset '(kana han symbol cjk-misc bopomofo))
+  (set-fontset-font (frame-parameter nil 'font)
+                    charset
+                    (font-spec :family "Microsoft YaHei" :size 16)))
 
 ;;添加第三方加载路径
 (defvar home-dir (file-name-directory load-file-name)
